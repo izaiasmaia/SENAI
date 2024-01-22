@@ -12,10 +12,10 @@ Link para download:
 ## Passo 1:
 - Criar uma nova VM, seguir as especificações das imagens (nome, seleção da ISO):  
 
-![image](img/Criar%20VM//criar-vm.png)  
-![image](img/Criar%20VM//hardware.png)  
-![image](img/Criar%20VM//hardware2.png)  
-![image](img/Criar%20VM//finalizar.png)  
+![image](img/CriarVM//criar-vm.png)  
+![image](img/CriarVM//hardware.png)  
+![image](img/CriarVM//hardware2.png)  
+![image](img/CriarVM//finalizar.png)  
 
 
 ## Passo 2:
@@ -29,23 +29,23 @@ Selecionar o idioma do **teclado**:
 
 ![image](img/Instalacao/install2.png)  
 
-__Continue__:  
+*Continue*:  
 
 ![image](img/Instalacao/install3.png)  
 
-__Install Now__:  
+*Install Now*:  
 
 ![image](img/Instalacao/install4.png)  
 
-__Continue__:  
+*Continue*:  
 
 ![image](img/Instalacao/install5.png)  
 
-__Continue__:  
+*Continue*:  
 
 ![image](img/Instalacao/install6.png)  
 
-Preencher os dados de usuário e senha e __Continue__:  
+Preencher os dados de usuário e senha e *Continue*:  
 
 ![image](img/Instalacao/install7.png)  
 
