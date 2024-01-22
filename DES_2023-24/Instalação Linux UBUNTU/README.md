@@ -12,8 +12,11 @@ Link para download:
 ## Passo 1:
 - Criar uma nova VM, seguir as especificações das imagens (nome, seleção da ISO):  
 
-![image](img/criar-vm.png)  
-![image](img/hardware.png)  
+![image](img/Criar%20VM//criar-vm.png)  
+![image](img/Criar%20VM//hardware.png)  
+![image](img/Criar%20VM//hardware2.png)  
+![image](img/Criar%20VM//finalizar.png)  
+
 
 ## Passo 2:
 - Iniciar a VM e seguir o passo a passo da instalação:  
