@@ -20,7 +20,38 @@ Link para download:
 
 ## Passo 2:
 - Iniciar a VM e seguir o passo a passo da instalação:  
-![image](img/criar-vm.png)
+
+Selecionar selecionar o idioma de exibição e depois **Install Ubuntu**:
+
+![image](img/Instalacao/install1.png)  
+
+Selecionar o idioma do **teclado**:  
+
+![image](img/Instalacao/install2.png)  
+
+__Continue__:  
+
+![image](img/Instalacao/install3.png)  
+
+__Install Now__:  
+
+![image](img/Instalacao/install4.png)  
+
+__Continue__:  
+
+![image](img/Instalacao/install5.png)  
+
+__Continue__:  
+
+![image](img/Instalacao/install6.png)  
+
+Preencher os dados de usuário e senha e __Continue__:  
+
+![image](img/Instalacao/install7.png)  
+
+Aguardar a instalação e reiniciar:  
+
+![image](img/Instalacao/install7.png)  
 
 ```cmd
 root@izaias-VirtualBox:/home/izaias# sh /media/izaias/VBox_GAs_7.0.14//VBoxLinuxAdditions.run
