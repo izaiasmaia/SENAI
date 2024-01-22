@@ -90,3 +90,20 @@ Instalar Node.js:
 ```bash
 root@izaias-VirtualBox:/home/izaias# apt install nodejs
 ```
+
+Link para download VSCode:  
+
+Baixar a versão .deb x64:  
+- [VSCode](https://code.visualstudio.com/Download) - Visual Studio Code  
+
+```bash
+root@izaias-VirtualBox:/home/izaias# apt install /home/izaias/Downloads/code_1.85.2-1705561292_amd64.deb
+```
+
+Instalar pacote ***net-tools***:  
+
+```bash
+root@izaias-VirtualBox:/home/izaias# sudo apt-get install net-tools
+```
+
+
