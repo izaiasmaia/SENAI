@@ -53,6 +53,30 @@ Aguardar a instalação e reiniciar:
 
 ![image](img/Instalacao/install7.png)  
 
+## Passo 3:
+- Iniciar a VM e seguir o passo a passo da instalação:  
+
+Em ***Software Updater*** clicar em ***Install Now***:
+
+![image](img/Configuracao/cfg1.png)  
+
+Abrie o menu **Dispositivos**, em sequda clicar em **Inserir imagem de CD dos adicionais para Convidados**:
+
+![image](img/Configuracao/cfg2.png)  
+
+Abrir o ***Terminal***:
+
+![image](img/Configuracao/cfg3.png)  
+
+Digitar na linha de comando ***sudo su*** para tornar-se ***root*** no terminal, sua senha deverá ser informada:
+
+![image](img/Configuracao/cfg4.png)  
+
+Instalar adicionais para convidado, reiniciar após a instalação:
+
 ```cmd
 root@izaias-VirtualBox:/home/izaias# sh /media/izaias/VBox_GAs_7.0.14//VBoxLinuxAdditions.run
 ```
+![image](img/Configuracao/cfg5.png)  
+
+
