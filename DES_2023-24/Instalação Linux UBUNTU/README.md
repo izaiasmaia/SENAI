@@ -74,9 +74,19 @@ Digitar na linha de comando ***sudo su*** para tornar-se ***root*** no terminal,
 
 Instalar adicionais para convidado, reiniciar após a instalação:
 
-```cmd
+```bash
 root@izaias-VirtualBox:/home/izaias# sh /media/izaias/VBox_GAs_7.0.14//VBoxLinuxAdditions.run
 ```
 ![image](img/Configuracao/cfg5.png)  
 
+Instalar Node.js:
+- Realizar o download dos pacotes:
+```bash
+root@izaias-VirtualBox:/home/izaias# curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+```
 
+Instalar Node.js:
+- Instalar o pacote:
+```bash
+root@izaias-VirtualBox:/home/izaias# apt install nodejs
+```
