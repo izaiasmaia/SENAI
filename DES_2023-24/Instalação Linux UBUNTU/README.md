@@ -85,15 +85,14 @@ Instalar Node.js:
 root@izaias-VirtualBox:/home/izaias# curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 ```
 
-Instalar Node.js:
 - Instalar o pacote:
 ```bash
 root@izaias-VirtualBox:/home/izaias# apt install nodejs
 ```
 
-Link para download VSCode:  
+Link para download **VSCode**:  
 
-Baixar a versão .deb x64:  
+Baixar a versão ***.deb x64***:  
 - [VSCode](https://code.visualstudio.com/Download) - Visual Studio Code  
 
 ```bash
