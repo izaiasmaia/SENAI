@@ -1,4 +1,4 @@
-# Tutorial Instalação Linus UBUNTU
+# Tutorial Instalação Linux UBUNTU
 
 ## Baixar a ISO mais recente, versão LTS:
 Link para download:
@@ -10,5 +10,5 @@ Link para download:
 - Instalar o VirtualBox com todas as opções padrão sugeridas: 
 
 ## Passo 2:
-- Criar uma nova VM:
+- Criar uma nova VM:  
 ![image](img/criar-vm.png)
