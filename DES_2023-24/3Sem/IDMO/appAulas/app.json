@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "aloMundo",
-    "slug": "aloMundo",
+    "name": "appAulas",
+    "slug": "appAulas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
