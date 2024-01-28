@@ -160,4 +160,4 @@ export default function App() {
 
 ### Imagem final da atividade:
 
-![image](img/final-aula.jpg)  
+![image](img/final-aula.jpeg)  
