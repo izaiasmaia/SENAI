@@ -11,9 +11,7 @@
 - Criar uma pasta com nome de **aula04**, em seguida criar um novo projeto com o nome appAula04
 
 ``` bash
-
 npx expo-create-app appAula04
-
 ```
 
 ### Passo 02:  
@@ -26,7 +24,7 @@ npx expo install react-native-screens react-native-safe-area-context
 npx expo install @react-navigation/native-stack
 ```
 
-### Passo 02:  
+### Passo 03:  
 
 - Na pasta raiz do projeto, criar a seguinte estrutura de pastas:  
 ![image](./imgs/estrutura.png)  
