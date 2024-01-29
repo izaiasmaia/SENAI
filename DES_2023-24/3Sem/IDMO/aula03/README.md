@@ -11,7 +11,7 @@
 
 ``` bash
 
-npx expo-create-app appAula03
+npx create-expo-app appAula03
 
 ```
 
