@@ -60,7 +60,7 @@ export default function App() {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-between',
-    
+
     gap: 10,
     padding: 10
   },
@@ -73,23 +73,28 @@ export default function App() {
     width: '100%',
   },
   btnSocialMedia: {
-  // Caso opte pelo auto, os botões devem ter o tamanho de acordo com os componentes(texto, ícone)
-    flexBasis:'100%',
-    flexShrink:1,
+    // Caso opte pelo auto, os botões devem ter o tamanho de acordo com os componentes(texto, ícone)
+    flexBasis: '100%',
+    flexShrink: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
     borderRadius: 5,
-    backgroundColor: '#ADD8E6',
+
     height: 45,
 
   },
+  vermelho: {
+    backgroundColor: '#FF0000',
+  },
+  azulClaro: {
+    backgroundColor: '#ADD8E6',
+  },
   btnText: {
     paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: 26
-
+    fontSize: 26,
+    color: 'white'
   }
 
 ```
@@ -155,6 +160,15 @@ export default function App() {
         <Feather name='instagram' size={32}></Feather>
     </TouchableOpacity>
     </View>
+
+    {/* Botão ocupando 100% da tela*/}
+      <View style={[styles.alinharHorizontal, styles.container2]}>
+        {/* Botão criado com TouchableOpacity */}
+        <TouchableOpacity style={[styles.btnSocialMedia, styles.vermelho]}>
+          <FontAwesome name='youtube' size={32}></FontAwesome>
+          <Text style={styles.btnText}>Youtube</Text>
+        </TouchableOpacity>
+      </View>
 
 ```
 
