@@ -11,7 +11,7 @@
 - Criar uma pasta com nome de **aula04**, em seguida criar um novo projeto com o nome appAula04
 
 ``` bash
-npx expo-create-app appAula04
+npx create-expo-app appAula04
 ```
 
 ### Passo 02:  
