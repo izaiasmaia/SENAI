@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-         <Stack.Tab
+         <Stack.Screen
          name='Home'
           component={Home}
           options={{
@@ -36,7 +36,7 @@ export default function App() {
 
           }}
         />
-        <Stack.Tab
+        <Stack.Screen
           name='Sobre'
           component={Sobre}
           options={{
@@ -44,7 +44,7 @@ export default function App() {
           }}
         />
 
-        <Stack.Tab
+        <Stack.Screen
           name='Contato'
           component={Contato}
           options={{
