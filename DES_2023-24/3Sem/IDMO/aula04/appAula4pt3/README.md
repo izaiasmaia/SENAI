@@ -7,6 +7,10 @@
 
 - [React Navigation](https://reactnavigation.org/docs/getting-started/) - 
 
+### Docs Tab Navigator:  
+
+-  [Botton Tab Navigator](https://reactnavigation.org/docs/bottom-tab-navigator)
+
 ### Passo 01:  
 - Instalar pelo terminal na aula **appAula4Pt3**:
 
