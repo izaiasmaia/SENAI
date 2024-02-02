@@ -10,8 +10,8 @@
 ### Passo 01:   
 - Instalar as bibliotecas:  
 ```bash
-expo install @react-navigation/drawer  
-expo install react-native-gesture-handler react-native-reanimated  
+npm install @react-navigation/drawer  
+npm install react-native-gesture-handler react-native-reanimated  
 ```
 
 ### Passo 02:  
@@ -55,7 +55,7 @@ const Tab = createBottomTabNavigator();
 
 ### Passo 05:  
 
-- Realizar o import do Drawer:
+- Realizar o import do Drawer no **routes/index.js** :
 ```javascript
 import { createDrawerNavigator } from "@react-navigation/drawer";
 ```
