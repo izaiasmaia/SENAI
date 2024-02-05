@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.11",
+<<<<<<< HEAD
+=======
+    "@react-navigation/drawer": "^6.6.6",
+>>>>>>> 1f2e5e8b38e14657527fd84becf5851b9a81ce0e
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "expo": "~50.0.4",
