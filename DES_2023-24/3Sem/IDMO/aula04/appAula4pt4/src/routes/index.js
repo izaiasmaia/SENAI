@@ -8,17 +8,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 
-import Home from './src/pages/Home';
-import Sobre from './src/pages/Sobre';
-import Contato from './src/pages/Contato'
+import StackRoutes from './stackRoutes';
+import Sobre from '../pages/Sobre';
+import Contato from '../pages/Contato'
 
 // Navegação tipo pilha, uma página sobre a outra
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+export default function Routes() {
   return (
-    <NavigationContainer>
+    
       <Tab.Navigator
         screenOptions={{
           tabBarActiveTintColor: 'black',
@@ -31,8 +31,8 @@ export default function App() {
         }}>
 
         <Tab.Screen
-          name='Home'
-          component={Home}
+          name='HomeStack'
+          component={StackRoutes}
           options={{
             title: 'Tela Inicial',
             // alterando o estilo do Header
@@ -76,6 +76,6 @@ export default function App() {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
+    
   )
 }
