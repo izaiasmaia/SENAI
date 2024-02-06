@@ -11,12 +11,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import StackRoutes from './stackRoutes';
 import Sobre from '../pages/Sobre';
 import Contato from '../pages/Contato';
+import CustomDrawer from '../components/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 
 export default function Routes() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContent={CustomDrawer}
+    >
       <Drawer.Screen
         name='HomeStack'
         component={StackRoutes}
