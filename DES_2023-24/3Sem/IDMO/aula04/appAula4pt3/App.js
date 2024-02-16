@@ -1,15 +1,16 @@
 /**Nosso App.js será responsável por qual rota deverá exibir */
 
-import {Button} from 'react-native'
+import { Button } from 'react-native'
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 
 import Home from './src/pages/Home';
 import Sobre from './src/pages/Sobre';
-import Contato from './src/Contato'
+import Contato from './src/pages/Contato'
 
 // Navegação tipo pilha, uma página sobre a outra
 const Stack = createNativeStackNavigator();
@@ -18,9 +19,19 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-         <Tab.Screen
-         name='Home'
+      <Tab.Navigator
+        screenOptions={{
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'white',
+          tabBarStyle: {
+            backgroundColor: '#ff1493'
+          }
+        
+
+        }}>
+
+        <Tab.Screen
+          name='Home'
           component={Home}
           options={{
             title: 'Tela Inicial',
@@ -30,9 +41,16 @@ export default function App() {
             },
             // alterando a cor do texto do Header
             headerTintColor: '#fff',
+            
+
             // Retirar o Header, tela de Login, tela inicial geralmente não tem
-            headerShown: false,
-             
+            // headerShown: false,
+            tabBarIcon: ({ color, size }) => {
+              return <FontAwesome5 name='home' color={color} size={size}></FontAwesome5>
+            },
+            // tabBarStyle:{
+            //   backgroundColor:'black'
+            // }
 
           }}
         />
@@ -41,6 +59,9 @@ export default function App() {
           component={Sobre}
           options={{
             title: 'Página Sobre',
+            tabBarIcon: ({ color, size }) => {
+              return <FontAwesome5 name='file-alt' color={color} size={size}></FontAwesome5>
+            },
           }}
         />
 
@@ -49,9 +70,12 @@ export default function App() {
           component={Contato}
           options={{
             title: 'Formulário de Contato',
+            tabBarIcon: ({ color, size }) => {
+              return <FontAwesome5 name='phone-alt' color={color} size={size}></FontAwesome5>
+            },
           }}
         />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
