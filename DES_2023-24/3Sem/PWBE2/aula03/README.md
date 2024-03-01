@@ -13,9 +13,9 @@
 
 # Iniciar um Back-End com Node JS
 	- 1. Criar uma pasta com o nome do seu projeto e niciar o VSCode na pasta
-	- 2. Para  cria o arquivo .json inicie o projeto com o comando -> _npm init _
-	- 3. Instale o framework express que será utilizado como servidor -> npm _install express_
-	- 4. Crie um arquivo chamado _app.js_
+	- 2. Para  cria o arquivo .json inicie o projeto com o comando -> npm init
+	- 3. Instale o framework express que será utilizado como servidor -> npm install express
+	- 4. Crie um arquivo chamado app-db.js
 	- 5. Para postar no GitHub criar o arquivo .gitignore e colocar a pasta **node_modules** e **package-lock.json**
 
 # Baixar e instalar o Insomnia
