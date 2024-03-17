@@ -27,6 +27,19 @@ const modelCliente = {
             throw error;
         }
     },
+    // SELECIONA O REGISTRO DESEJADO NA TABELA CLIENTES POR NOME;
+    selectClienteNome: async (id) => {
+        try {
+            const conn = await connection();
+            const sql = `SELECT * FROM clientes WHERE nome=?;`;
+            const values = `${id}`;
+            const [rows] = await conn.query(sql, values);
+            return rows;
+
+        } catch (error) {
+            throw error;
+        }
+    },
     // INSERE UM NOVO REGISTRO NA TABELA CLIENTES;
     insertCliente: async (cliente) => {
         try {

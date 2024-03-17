@@ -13,37 +13,66 @@ export default function NovoCliente() {
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
 
-    // useEffect(() => {
-    //     // Define um temporizador para fechar o alerta após 3 segundos
-    //     if (showAlert) {
-    //         // const timeout = setTimeout(() => {
-    //         //     setShowAlert(false);
-    //         // }, 3000);
-
-    //         // Limpa o temporizador quando o componente é desmontado ou o estado showAlert é alterado
-    //         return () => clearTimeout(timeout);
-    //     }
-    // }, [showAlert]);
-
+   
+    /** Altera o valor de setShowAlert para true */
     const handleShowAlert = () => {
         setShowAlert(true);
     };
 
+    /** Altera o valor de setShowAlert para false */
+    const hideAlert = () => {
+        setShowAlert(false);
+    };
+
+    /**
+     * Cria o componente Alert que é renderizado através do useEffect com o parâmetro showAlert
+     */
+    useEffect(() => {
+        if (showAlert) {
+            Alert.alert(
+                'Atenção!',
+                alertMessage,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => {
+                            hideAlert();
+                        }
+                    }
+                ],
+                { cancelable: false }
+            );
+        }
+    }, [showAlert]);
+
+    /**
+     * * Função que realizada a requisição para inserção do cliente na API
+    */
     const SalvarCliente = async (id) => {
         try {
             console.log(txtNome, txtIdade);
 
-            if (txtNome == '' || txtIdade == '' || txtNome == null || txtIdade == null) {
-                setAlertMessage('Preencha corretamente todos os campos!')
+            if (txtNome == '' || txtNome == null) {
+                setAlertMessage('Preencha corretamente o campo nome!')
                 handleShowAlert();
                 return;
             }
-            const response = await api.post(`/clientes`, { nome: txtNome, idade: Number(txtIdade) })
+            if (txtIdade == '' || txtIdade == null) {
+                setAlertMessage('Preencha corretamente o campo idade')
+                handleShowAlert();
+                return;
+            }
+            if (isNaN(Number(txtIdade))) {
+                setAlertMessage("A idade deve ser um número!");
+                handleShowAlert()
+                return;
+            }
+
+            const response = await api.post(`/clientes`, { nome: txtNome.trim(), idade: Number(txtIdade) })
                 .catch(function (error) {
                     if (error.response) {
                         // A requisição foi feita e o servidor respondeu com um código de status
                         // que sai do alcance de 2xx
-
                         console.error(error.response.data);
                         console.error(error.response.status);
                         console.error(error.response.headers);
@@ -83,6 +112,9 @@ export default function NovoCliente() {
         }
     }
 
+    /**
+     * Renderiza os componetes na tela do dispositivo
+     */
     return (
         <SafeAreaView style={styles.container}>
 
@@ -106,16 +138,6 @@ export default function NovoCliente() {
                 style={[styles.alignVH, { width: '80%', height: 40, borderColor: 'black', backgroundColor: 'blue', borderRadius: 4 }]}>
                 <Text style={{ color: 'white' }}>Salvar</Text>
             </TouchableOpacity>
-
-
-            {showAlert && (Alert.alert(
-                'Atenção!',
-                alertMessage,
-                [
-                    { text: 'OK', onPress: () => setShowAlert(false) }
-                ],
-                { cancelable: false }
-            ))}
             <StatusBar style="auto" />
         </SafeAreaView>
     )

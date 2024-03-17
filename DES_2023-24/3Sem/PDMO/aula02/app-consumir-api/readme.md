@@ -1,4 +1,4 @@
-# Aula01 - Consumindo API com React Native e JavaScript fetch
+# Aula01 - Consumindo API com React Native e JavaScript async/await
 
 ## 1. Introdução
 ### 1.1. O que é uma API?
@@ -33,3 +33,11 @@
 - Podemos utilizar o yarn como gerenciador de pacotes
     - `yarn add react-navigation react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context`
     - `yarn add @react-navigation/stack`
+
+### 2.3. Configurando IP da API 
+- Para os testes realizados atentar-se:
+    - A API e o projeto mobile devem rodar na mesma rede, ou tem comunicação entre si através de gateway, etc.
+    - O endereço da api no arquivo **./src/servives/api/api.js** deve ser o mosmo que a API esteja rodando;
+  
+## 3. API utilizada - aula 03 de PWBE2
+- Localizar e rodar a API desenvolvida na aula03 da Unidade curricular PWBE2

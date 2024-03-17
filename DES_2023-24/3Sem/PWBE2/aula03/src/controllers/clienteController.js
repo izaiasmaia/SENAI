@@ -28,14 +28,28 @@ const clienteController = {
         }
     },
 
+    // RETORNA O CLIENTE COM BASE NO ID INFORMADO
+    selecionarClienteNome: async (req, res) => {
+        try {
+            const { id } = req.params;
+            console.log(id);
+            const cliente = await clienteModel.selectClienteNome(id);
+            return res.json(cliente)
+
+        } catch (error) {
+            throw error
+        }
+    },
+
     // CREATE - CRIA UM NOVO CLIENTE
     adicionarCliente: async (req, res) => {
         try {
             const { nome, idade } = req.body;
+            console.log(nome, idade);
             const result = await clienteModel.insertCliente({ nome: nome, idade: idade });
             console.log(result);
-            const clientes = await clienteModel.selecionaTodosClientes();
-            return res.json(clientes);
+            // const clientes = await clienteModel.selecionaTodosClientes();
+            return res.json(result);
 
         } catch (error) {
             throw error
@@ -47,13 +61,13 @@ const clienteController = {
             const { id } = req.params;
             const { nome, idade } = req.body;
 
-            const result2 = await clienteModel.updateCliente(id, { nome: nome, idade: idade });
-
-            const clientes = await clienteModel.selecionaTodosClientes();
-            return res.json(clientes);
+            const result = await clienteModel.updateCliente(id, { nome: nome, idade: idade });
+            console.log(result);
+            // const clientes = await clienteModel.selecionaTodosClientes();
+            return res.json(result);
 
         } catch (error) {
-            throw error
+            return res.json(error);
         }
     },
     deletarCliente: async (req, res) => {
@@ -61,11 +75,13 @@ const clienteController = {
             const { id } = req.params;
             // return res.json(await deleteCliente(id),{ message: `Registro deletado com sucesso!` });
             var result = await clienteModel.deleteCliente(id);
-            if(result.affectedRows > 0){
-                return res.status(200).send(`Registro excluído com sucesso!`)
-            }else{
-                return res.send("Registro não localizado");
-            }            
+            console.log(result);
+            // if(result[0].affectedRows > 0){
+            //     return res.status(200).send(`Registro excluído com sucesso!`)
+            // }else{
+            //     return res.send("Registro não localizado");
+            // } 
+            return res.json(result)           
 
         } catch (error) {
             throw error

@@ -19,17 +19,48 @@ export default function EditarCliente() {
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
 
-    const navegaTodos = () => {
-        // 'TodosClientes',{status:true}
-        navigation.navigate("TodosClientes", { status: true });
+    function navegaTodosClientes() {
+        navigation.navigate("TodosClientes", { setRefresh: true });
     }
+
+    /** Altera o valor de setShowAlert para true */
     const handleShowAlert = () => {
         setShowAlert(true);
     };
 
+    /** Altera o valor de setShowAlert para false */
+    const hideAlert = () => {
+        setShowAlert(false);
+    };
+
+    /**
+     * Cria o componente Alert que é renderizado através do useEffect com o parâmetro showAlert
+     */
+    useEffect(() => {
+        if (showAlert) {
+            Alert.alert(
+                'Atenção!',
+                alertMessage,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => {
+                            hideAlert();
+                            navegaTodosClientes();
+                        }
+                    }
+                ],
+                { cancelable: false }
+            );
+        }
+    }, [showAlert]);
+
+    /**
+     * * Função que realizada a requisição para edição do cliente na API
+    */
     const editarCliente = async (id) => {
         try {
-            console.log(txtNome, txtIdade);
+            // console.log(txtNome, txtIdade);
 
             if (txtNome == '' || txtNome == null) {
                 setAlertMessage('Preencha corretamente o campo nome!')
@@ -47,7 +78,7 @@ export default function EditarCliente() {
                 return;
             }
 
-            const response = await api.put(`/clientes/${txtId}`, { nome: txtNome, idade: Number(txtIdade) })
+            const response = await api.put(`/clientes/${txtId}`, { nome: txtNome.trim(), idade: Number(txtIdade) })
                 .catch(function (error) {
                     if (error.response) {
                         console.error(error.response.data);
@@ -61,23 +92,27 @@ export default function EditarCliente() {
                     } else {
                         console.error('Error:', error.message);
                     }
-                    // console.error(error.config);
+                    console.error(error.config);
                 });
             console.log((response));
             if (response != undefined) {
                 if (response.data[0].changedRows == 1) {
-          
+
                     setAlertMessage('Registro alterado com sucesso!')
                     setTxtId('');
                     setTxtNome('');
                     setTxtIdade('');
                     handleShowAlert();
-                    navigation.navigate('TodosClientes', {status:true});
+                    navigation.navigate('TodosClientes', { status: true });
                 }
-                else {
-                    setAlertMessage('Ocorreu um erro ao alterar o registro');
+                else if (response.data[0].info == 'Rows matched: 1  Changed: 0  Warnings: 0') {
+                    setAlertMessage('Nenhuma alteração foi detectada, registro não alterado!');
                     handleShowAlert();
                 }
+            }
+            else {
+                setAlertMessage('Ocorreu um erro ao atualizar o registro, tente novamente!');
+                handleShowAlert();
             }
             // console.log(cliente);
         } catch (error) {
@@ -85,6 +120,9 @@ export default function EditarCliente() {
         }
     }
 
+    /**
+     * Renderiza os componetes na tela do dispositivo
+     */
     return (
         <SafeAreaView style={styles.container}>
 
@@ -105,27 +143,14 @@ export default function EditarCliente() {
 
             <TouchableOpacity
                 onPress={() => {
-                    editarCliente()
+                    editarCliente();
                 }}
                 style={[styles.alignVH, { width: '80%', height: 40, borderColor: 'black', backgroundColor: 'blue', borderRadius: 4 }]}>
                 <Text style={{ color: 'white' }}>Salvar</Text>
             </TouchableOpacity>
 
 
-            {showAlert && (Alert.alert(
-                'Atenção!',
-                alertMessage,
-                [
-                    {
-                        text: 'OK', onPress: async () => {
-                            setShowAlert(false);
-                            // navigation.navigate("TodosClientes",{status:`${setTxtId}`});
 
-                        }
-                    }
-                ],
-                { cancelable: false }
-            ))}
             <StatusBar style="auto" />
         </SafeAreaView>
     )

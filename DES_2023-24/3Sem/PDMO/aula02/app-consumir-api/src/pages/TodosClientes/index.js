@@ -1,7 +1,7 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Alert, FlatList } from 'react-native';
-import { useNavigation, useRoute, useFocusEffect, StackActions } from '@react-navigation/native'
+import { StyleSheet, Text, View, TouchableOpacity, Alert, FlatList } from 'react-native';
+import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native'
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 
@@ -11,29 +11,52 @@ export default function TodosCliente() {
 
     const navigation = useNavigation();
     const route = useRoute();
+    let temp = [];
 
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
     let [flatListItems, setFlatListItems] = useState([]);
-    let [status, setStatus] = useState('');
+    const [refresh, setRefresh] = useState(route.params?.setRefresh ? route.params.setRefresh : false);
 
-    // const [estado, setEstado] = useState();
-    // if (route.params?.status) {
-    //     console.log((route.params?.status));
-    //     setStatus(route.params?.status);
-    // }
-    // setEstado(route.params?.status);
-    // console.log((estado));
-
+    /** Realiza a navegação para a Screen EditarCliente */
     const navegaEditarCliente = (pId, pNome, pIdade) => {
-        navigation.navigate('EditarCliente', { id: pId, nome: pNome, idade: pIdade});
+        navigation.navigate('EditarCliente', { id: pId, nome: pNome, idade: pIdade });
     };
 
+    /** Altera o valor de setShowAlert para true */
     const handleShowAlert = () => {
         setShowAlert(true);
     };
 
+    /** Altera o valor de setShowAlert para false */
+    const hideAlert = () => {
+        setShowAlert(false);
+    };
+
+    /**
+     * Cria o componente Alert que é renderizado através do useEffect com o parâmetro showAlert
+     */
+    useEffect(() => {
+        if (showAlert) {
+            Alert.alert(
+                'Atenção!',
+                alertMessage,
+                [
+                    {
+                        text: 'OK',
+                        onPress: hideAlert
+                    }
+                ],
+                { cancelable: false }
+            );
+        }
+    }, [showAlert]);
+
+    /** 
+     * Função que seleciona todos os clientes existentes na base de dados 
+    */
     const buscarClientes = async () => {
         try {
-            console.log('cheeegou');
             const response = await api.get(`/clientes`).catch(function (error) {
                 if (error.response) {
                     console.error(error.response.data);
@@ -50,24 +73,63 @@ export default function TodosCliente() {
                     console.error('Error:', error.message);
                     return;
                 }
-                // console.error(error.config);
-                // return;
             });
-            // console.log((response));
+
             if (response != undefined) {
                 if (response.data.length > 0) {
-                    let temp = [];
+
                     for (let index = 0; index < response.data.length; index++) {
                         temp.push(response.data[index]);
-                        // console.log(response.data.length);                       
+
                     }
                     setFlatListItems(temp);
+                    temp = [];
                 }
                 else {
+                    setFlatListItems([]);
                     setAlertMessage('Nenhum registro localizado');
                     handleShowAlert();
                     return;
                 }
+            }
+        } catch (error) {
+            return;
+        }
+    };
+
+    /** Função que exclui o cliente selecionado */
+    const excluirCliente = async (id) => {
+        try {
+            const response = await api.delete(`/clientes/${id}`).catch(function (error) {
+                if (error.response) {
+                    console.error(error.response.data);
+                    console.error(error.response.status);
+                    console.error(error.response.headers);
+                    return;
+                } else if (error.request) {
+                    if ((error.request._response).includes('Failed')) {
+                        console.error(error.request._response);
+                        return;
+                    }
+
+                } else {
+                    console.error('Error:', error.message);
+                    return;
+                }
+
+            });
+
+            if (response != undefined) {
+
+                if (response.data[0].affectedRows > 0) {
+
+                    setRefresh(prevState => !prevState);
+                    setAlertMessage('Registro excluído com sucesso!');
+                }
+                else {
+                    setAlertMessage('Registro não localizado');
+                }
+                handleShowAlert();
             }
             // console.log(cliente);
         } catch (error) {
@@ -76,22 +138,19 @@ export default function TodosCliente() {
         }
     }
 
-    // console.log(route.params?.status);
+    /** Realiza a busca dos clientes na base de dados a cada mudança de estado de 'refresh' */
+    useFocusEffect(
+        useCallback(() => {
+            buscarClientes();
+        }, [refresh])
+    )
 
-    useEffect(() => {
-        buscarClientes();
-        setStatus(route.params?.status);
-    }, [route.params?.status]);    
-
-    useEffect(() => {
-        buscarClientes();
-    }, [status]);
-
-    // useFocusEffect(() => {
-    //     buscarClientes();
-    //     console.log('ufea');
-    // });
-
+    /**
+     * 
+     * @param {Dados de cada cliente informados na chamada da função} item 
+     * @returns Retorna a renderização do componente para cada cliente.
+     * Neste componente temos um alert com dois botões, um para realizar a edição de cada item e outro para realizar a exclusão 
+     */
     let listItemView = (item) => {
         return (
 
@@ -110,11 +169,32 @@ export default function TodosCliente() {
                 <View style={[styles.container, styles.alignVH]}>
                     <TouchableOpacity
                         onPress={() => {
+                            Alert.alert(
+                                'Atenção!',
+                                'Deseja realmente excluir esse cliente?',
+                                [
+                                    {
+                                        text: 'OK',
+                                        onPress: () => {
+                                            excluirCliente(item.id);
+                                            // setShowAlert(false)
+                                        }
+                                    },
+                                    {
+                                        text: 'Cancelar',
+                                        onPress: () => {
+                                            return;
+                                        }
 
+                                    }
+                                ],
+                                //Permite clicar fora da áre do alert para fechá-lo;
+                                { cancelable: true }
+                            )
                         }}
                         style={[styles.alignVH, { paddingRight: 30 }]}
                     >
-                        {/* <Text style={{ color: 'white' }}>Pressione para Pesquisar</Text> */}
+
                         <FontAwesome5 name="trash-alt" color='red' size={24} />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -122,7 +202,6 @@ export default function TodosCliente() {
                             navegaEditarCliente(item.id, item.nome, item.idade);
                             // setFlatListItems([]);
                         }}>
-                        {/* <Text style={{ color: 'white' }}>Pressione para Pesquisar</Text> */}
                         <FontAwesome5 name="edit" color='blue' size={24} />
                     </TouchableOpacity>
                 </View>
@@ -130,12 +209,11 @@ export default function TodosCliente() {
 
         );
     };
-
-
-
+    /**
+     * Retorna a renderização dos componentes na tela do dispositivo
+     */
     return (
-
-        <View style={{ flex: 1, backgroundColor: 'darkgray' }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={styles.cardTitle}>
                 <Text style={[styles.title, { margin: 20 }]}>Clientes Cadastrados</Text>
             </View>
@@ -151,7 +229,6 @@ export default function TodosCliente() {
                 />
             </View>
         </View>
-
     );
 }
 
@@ -180,5 +257,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     }
-
 });
