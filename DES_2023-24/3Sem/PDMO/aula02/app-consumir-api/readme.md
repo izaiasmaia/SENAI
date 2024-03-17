@@ -1,4 +1,4 @@
-# Aula01 - Consumindo API com React Native e JavaScript async/await
+# Aula02 - Consumindo API com React Native e JavaScript async/await
 
 ## 1. Introdução
 ### 1.1. O que é uma API?
@@ -13,8 +13,8 @@
 ### 2.1. Iniciando um novo aplicativo React Native com Expo, para consumir a API que já criamos.
 - Criar um novo projeto React Native com Expo conforme instruções:
 - Criar uma pasta com com o nome da disciplina, **PPDM**:
-- Criar uma pasta com o nome **aula01**
-- Dentro da pasta **aula01** iniciar o VSCode e criar o projeto abaixo:
+- Criar uma pasta com o nome **aula02**
+- Dentro da pasta **aula02** iniciar o VSCode e criar o projeto abaixo:
     - `npx create-expo-app app-consumir-api`
 - Comando para iniciar o projeto:
     - `npx expo start`
