@@ -25,7 +25,7 @@
    
   
 - Instalar a dependência do React Navigation Stack:
-    - `npm install @react-navigation/stack`
+    - `npm install @react-navigation/native-stack`
   
 - Instalar o Axios, componente que fará a conexão com nossa API:
     - `npm install axios`
