@@ -27,7 +27,7 @@
   
 - Instalar o SqLite, componente de base de dados local:
     - `npx expo install expo-sqlite`
-
+  
 - Instalar o pacote abaixo como alternativa de lidar com áreas seguras:
     - `npm install react-native-safe-area-context`
   
