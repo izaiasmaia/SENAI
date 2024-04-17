@@ -1,0 +1,26 @@
+{
+    "_array": [
+        {
+            "classificacao": "+14",
+            "data": "2024-04-16 22:07:47.985",
+            "filme": "Harry Potter",
+            "genero": "Ação",
+            "id": 2
+        },
+        {
+            "classificacao": "+16",
+            "data": "2024-04-16 22:08:25.519",
+            "filme": "Blade Runner",
+            "genero": "Ficção",
+            "id": 3
+        },
+        {
+            "classificacao": "Livre",
+            "data": "2024-04-16 22:10:33.822",
+            "filme": "Thinker Bell",
+            "genero": "Aventura",
+            "id": 4
+        }
+    ],
+    "length": 3
+}
