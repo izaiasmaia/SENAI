@@ -1,0 +1,17 @@
+{
+    "date": 1714130218418,
+    "request": {
+        "content": {
+            "autoDismiss": true,
+            "badge": null,
+            "body": "Este é um teste de notificação local com temporizador, exibida após o tempo determinado",
+            "data": null,
+            "sound": "default",
+            "sticky": false,
+            "subtitle": null,
+            "title": "Notificação local ⏱️"
+        },
+        "identifier": "583cddfa-f27f-47ba-ac8b-dd4ec14e05bdf",
+        "trigger": null
+    }
+}
