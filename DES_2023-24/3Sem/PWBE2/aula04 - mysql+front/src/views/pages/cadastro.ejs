@@ -1,0 +1,43 @@
+
+<div class="card col-md-12">
+    <h5 class="card-header">Adicionar registro</h5>
+    <div class="card-body">
+      <h5 class="card-title" style="margin-top: 30px;"></h5>
+      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+
+      <form class="form-goup" action="/cadastro/novo" method="post">
+       
+        <div class="container">
+            <div class="form-floating mb-3 col-md-12">
+                <input type="text" class="form-control " id="titulo" name="titulo" placeholder="" required>
+                <label for="titulo">Título do filme</label>
+            </div>
+        </div>
+        <div class="container">
+            
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="ano" placeholder="" required>
+                <label for="floatingInput">Ano de lançamento</label>
+            </div>
+        </div>
+
+       
+          
+    
+        <div class="container">
+            <div class="d-grid gap-2 col-3">
+                <button class="btn btn-primary col-md-12" type="submit">Salvar registro</button>
+            </div>
+            <div class="d-grid gap-2 col-3">
+                <a href="/listar" class="btn btn-secondary col-md-12">Cancelar</a>
+            </div>
+        </div>
+    
+        
+    
+    </form>
+    </div>
+  </div>
+
+
+

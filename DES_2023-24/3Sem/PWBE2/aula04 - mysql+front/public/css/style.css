@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    /* padding: 0; */
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #2e5efa;
+    --primary-color: #146520;
+}
+
+main {
+    width: 80%;
+    margin-top: 50px;
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    /* background-color: rgb(0, 158, 179); */
+    /* Assim que você atribuir a propriedade de CSS 'display: flex' ao elemento, ele passará a ser o que chamamos de flex container e todos seus filhos diretos, por sua vez, serão os flex-itens */
+
+    /* Alinha itens flexíveis ao longo da linha atual do flex container */
+    /* Alinha os itens ao centro */
+    /* min-height: 50vh; */
+
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    /* min-height: 100vh; */
+}
+
+header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    text-align: center;
+    /* padding: 20px 0; */
+}
+
+footer {
+    display: block;
+    position: fixed;
+    width: 100%;
+    /* Através do atributo bottom é possível definir a posição vertical do elemento em relação a sua borda inferior. */
+    bottom: 0vh;
+    left: 0;
+    background: white;
+    text-align: center;
+    /* A propriedade padding define uma a distância entre o conteúdo de um elemento e suas bordas.  */
+    padding: 20px 0;
+}
+
+header a {
+    text-decoration: none;
+}
+
+/* a{
+    flex-direction: row;
+} */
+
+/* img {
+    width: 150px;
+} */
+
+/* Container com itens alinhados ao centro */
+.container {
+    display: flex;
+    /* Alinha os itens ao centro */
+    align-items: center;
+    /* Largura que a div deve ocupar da área útil da tela*/
+    /* width: 80%; */
+    /* Espaçamento interno entre linhas e colunas */
+    gap: 5px;
+}
+
+/* Alinhar itens em linha */
+.alinhar-em-linha {
+    flex-direction: row;
+}
+
+/* Alinhar itens em colunas */
+.alinhar-em-coluna {
+    flex-direction: column;
+}
+
+.alinhar-texto-centro {
+    text-align: center;
+}
+
+.title {
+    /* Tamanho da fonte */
+    font-size: 40px;
+    /* Alinha o texto ao centro */
+    text-align: center;
+    /* Define se permite a seleção do texto */
+    user-select: none;
+    /* Cor do texto definida através de variável criada no início do CSS */
+    color: var(--primary-color);
+}
+
+.row {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    gap: 10px;
+}
+
+table {
+    width: 100vw;
+    /* max-width: 800px; */
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin: 20px;
+}
+
+table tr {
+    width: 98%;
+    border-bottom: 1px solid #ddd;
+}
+
+table tr th {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+table tr td {
+    padding: 10px;
+    text-align: center;
+}

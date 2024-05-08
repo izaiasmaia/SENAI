@@ -1,0 +1,161 @@
+<h3>Filmes cadastrados</h3>
+
+<table class="table table-hover" width="100%">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Título do filme</th>
+            <th>Ano de lançamento</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% filmes.forEach(function(item) { %>
+            <tr id="row-<%= item.id %>">
+                <td>
+                    <%= item.id %>
+                </td>
+                <td>
+                    <%= item.titulo %>
+                </td>
+                <td>
+                    <%= item.ano %>
+                </td>
+                <td>
+                    <a method="put" href="/editar/<%= item.id%>">
+                        <span style="font-size: 24px; color:green;"><i class="fa-regular fa-pen-to-square"></i></span>
+                    </a>
+                </td>
+                <td>
+                    <a method="post" href="#" onclick="exibirModalConfirmacao('<%= item.id %>')">
+                        <span style="font-size: 24px; color: orangered;">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+
+            <% }); %>
+    </tbody>
+</table>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConfirmacaoLabel">Confirmação de Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja excluir?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="excluirItem()">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Resultado / NÃO ESTÁ EM USO -->
+<div class="modal fade" id="modalResultado" tabindex="-1" aria-labelledby="modalResultadoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalResultadoLabel">Resultado da Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body" id="resultadoMensagem">
+                <!-- Mensagem de resultado será exibida aqui -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Exibe mensagem retornada da operação que foi realizada -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fa-regular fa-bell rounded me-2"></i>
+            <strong class="me-auto">Informação</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body  text-white bg-success" id="messageLiveToast">
+            Aqui é incluída a mensagem de retorno
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    let idDel;
+    let modalConfirmacao;
+
+    // Função para exibir o modal de confirmação
+    function exibirModalConfirmacao(itemId) {
+        idDel = itemId;
+
+        // Exibir o modal de confirmação
+        modalConfirmacao = new bootstrap.Modal(document.getElementById('modalConfirmacao'));
+        modalConfirmacao.show();
+    }
+
+    async function excluirItem() {
+
+        try {
+            const response = await fetch('/excluir/' + idDel, {
+                method: 'POST'
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao excluir o item');
+            }
+
+            const data = await response.json();
+            // fecharModalConfirmacao(); // Fechar o modal de confirmação antes de exibir o modal de resultado
+            // exibirModalResultado(data.message);
+            console.log(data);
+            if (data.success) {
+                // Remove o item excluído da tabela
+                const rowToRemove = document.getElementById('row-' + idDel);
+                if (rowToRemove) {
+                    rowToRemove.parentElement.removeChild(rowToRemove);
+                }
+
+                // Fecha o modal de confirmação antes de exibir o modal de resultado
+                fecharModalConfirmacao();
+
+                // Exibe o modal de resultado com a mensagem
+                exibirModalResultado(data.message);
+            } else {
+                // Exibimos apenas a mensagem de erro caso a exclusão tenha falhado
+                exibirModalResultado(data.message);
+            }
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    }
+
+    function fecharModalConfirmacao() {
+        // modalConfirmacao = document.getElementById('modalConfirmacao');
+        // console.log("Modal de confirmação:", modalConfirmacao); // Verifique se o modal está sendo corretamente identificado
+        // var myModal = new bootstrap.Modal(modalConfirmacao);
+
+        modalConfirmacao.hide();
+    }
+
+    function exibirModalResultado(mensagem) {
+        document.getElementById('messageLiveToast').innerText = mensagem;
+        var myToast = new bootstrap.Toast(document.getElementById('liveToast'));
+        myToast.show();
+    }
+
+ </script>
