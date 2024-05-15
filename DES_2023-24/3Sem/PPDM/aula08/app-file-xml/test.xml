@@ -1,0 +1,20 @@
+<biblioteca>
+    <livro>
+        <titulo>O Senhor dos Anéis</titulo>
+        <autor>J.R.R. Tolkien</autor>
+        <ano>1954</ano>
+        <genero>Fantasia</genero>
+    </livro>
+    <livro>
+        <titulo>Harry Potter e a Pedra Filosofal</titulo>
+        <autor>J.K. Rowling</autor>
+        <ano>1997</ano>
+        <genero>Fantasia</genero>
+    </livro>
+    <livro>
+        <titulo>O Código Da Vinci</titulo>
+        <autor>Dan Brown</autor>
+        <ano>2003</ano>
+        <genero>Suspense</genero>
+    </livro>
+</biblioteca>
