@@ -1,0 +1,110 @@
+[
+    {
+        "nome": "Pedro",
+        "data_nasc": "12/05/1989",
+        "cpf": "768.633.600-78",
+        "sexo": "M",
+        "estado_civil": "casado",
+        "email": "email1@example.com",
+        "telefone": "(19) 99999-5555"
+    },
+    {
+        "nome": "Maria",
+        "data_nasc": "12/05/1995",
+        "cpf": "080.443.240-62",
+        "sexo": null,
+        "estado_civil": "solteira",
+        "email": "email12@example.com",
+        "telefone": "(19) 98199-5782"
+    },
+    {
+        "nome": "Priscila",
+        "data_nasc": "12/05/1995",
+        "cpf": "310.585.400-25",
+        "sexo": "M",
+        "estado_civil": "casada",
+        "email": "email2@example.com",
+        "telefone": "(19) 99399-8255"
+    },
+    {
+        "nome": "Roberto",
+        "data_nasc": "12/05/1995",
+        "cpf": "562.086.370-07",
+        "sexo": "M",
+        "estado_civil": null,
+        "email": "email3@example.com",
+        "telefone": "(19) 99932-5855"
+    },
+    {
+        "nome": "Karina",
+        "data_nasc": "25/08/1999",
+        "cpf": "294.480.050-75",
+        "sexo": "F",
+        "estado_civil": "divorciada",
+        "email": "email813@example.com",
+        "telefone": "(19) 99699-5521"
+    },
+    {
+        "nome": "Priscila",
+        "data_nasc": "12/05/1995",
+        "cpf": "310.585.400-25",
+        "sexo": "M",
+        "estado_civil": "casada",
+        "email": "email2@example.com",
+        "telefone": "(19) 99399-8255"
+    },
+    {
+        "nome": "Matheus",
+        "data_nasc": "25/08/1999",
+        "cpf": "310.507.300-03",
+        "sexo": "M",
+        "estado_civil": "divorciada",
+        "email": "email13@example.com",
+        "telefone": "(19) 97899-5542"
+    },
+    {
+        "nome": "Cibele",
+        "data_nasc": "25/08/1999",
+        "cpf": "526.483.160-27",
+        "sexo": "M",
+        "estado_civil": "divorciada",
+        "email": "email13@example.com",
+        "telefone": "(19) 94899-5005"
+    },
+    {
+        "nome": "Ronaldo",
+        "data_nasc": "25/08/1999",
+        "cpf": "398.381.080-22",
+        "sexo": "M",
+        "estado_civil": "casado",
+        "email": null,
+        "telefone": "(19) 99999-1234"
+    },
+    {
+        "nome": "Higor",
+        "data_nasc": "25/08/1999",
+        "cpf": "129.839.800-22",
+        "sexo": "M",
+        "estado_civil": "solteiro",
+        "email": "email139@example.com",
+        "telefone": "(19) 99889-5587"
+    },
+    {
+        "nome": "Marcela",
+        "data_nasc": "25/08/1999",
+        "cpf": "777.240.610-09",
+        "sexo": "F",
+        "estado_civil": "solteira",
+        "email": "email19933@example.com",
+        "telefone": "(19) 93299-5555"
+    },
+    {
+        "nome": "Karina",
+        "data_nasc": "25/08/1999",
+        "cpf": "294.480.050-75",
+        "sexo": "F",
+        "estado_civil": "divorciada",
+        "email": "email813@example.com",
+        "telefone": "(19) 99699-5521"
+    }
+]

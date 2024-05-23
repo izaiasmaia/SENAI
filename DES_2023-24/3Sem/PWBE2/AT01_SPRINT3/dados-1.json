@@ -1,0 +1,9 @@
+{
+    "nome": "Napoleão Bonaparte",
+    "data_nasc": "12/05/1995",
+    "cpf": "12345678901",
+    "sexo": "M",
+    "estado_civil": "casado",
+    "email": "napoleão@example.com",
+    "telefone": "(19) 99999-5555"
+}
